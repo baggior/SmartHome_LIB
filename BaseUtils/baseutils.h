@@ -46,6 +46,8 @@ char getFieldChar(String str, uint8_t fieldNum, char delimiter = ':');
 int32_t getFieldInt(String str, uint8_t fieldNum, char delimiter = ':');
 float getFieldFloat(String str, uint8_t fieldNum, char delimiter = ':');
 
+uint16_t CRC16(uint8_t *puchMsg, uint16_t usDataLen);
+
 /////////////////////////////////////////////////////////////////////////////
 /*
 String & leftPadTo(String &str, const uint8_t num, const char paddingChar);
