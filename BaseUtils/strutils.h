@@ -29,6 +29,10 @@ String byteToHexString(uint8_t* buf, uint8_t length, String strSeperator="-") ;
 void stringToBytes(const char* str, char sep, byte* bytes, int maxBytes, int base);
 
 
+String ipToString(uint8_t *ip);
+
+
+
 }
 
 #endif

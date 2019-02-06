@@ -56,3 +56,18 @@ void baseutils::stringToBytes(const char* str, char sep, byte* bytes, int maxByt
     str++;
   }
 }
+
+
+#include <sstream>
+/**
+ * @brief Convert an IP address to string.
+ * @param ip The 4 byte IP address.
+ * @return A string representation of the IP address.
+ */
+String ipToString(uint8_t *ip) {
+	std::stringstream s;
+	s << (int) ip[0] << '.' << (int) ip[1] << '.' << (int) ip[2] << '.' << (int) ip[3];
+	return s.str().c_str();
+} // ipToString
+
+
