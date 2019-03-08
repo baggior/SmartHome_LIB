@@ -47,6 +47,7 @@ int32_t getFieldInt(String str, uint8_t fieldNum, char delimiter = ':');
 float getFieldFloat(String str, uint8_t fieldNum, char delimiter = ':');
 
 uint16_t CRC16(uint8_t *puchMsg, uint16_t usDataLen);
+unsigned char calculateLRC( const char * frame, size_t usLen );
 
 /////////////////////////////////////////////////////////////////////////////
 /*
