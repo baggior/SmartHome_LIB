@@ -681,6 +681,40 @@ unsigned char calculateLRC( const char * frame, size_t usLen )
 }
 
 
+unsigned char char2Binary( unsigned char ucCharacter )
+{
+    if( ( ucCharacter >= '0' ) && ( ucCharacter <= '9' ) )
+    {
+        return ( unsigned char )( ucCharacter - '0' );
+    }
+    else if( ( ucCharacter >= 'A' ) && ( ucCharacter <= 'F' ) )
+    {
+        return ( unsigned char )( ucCharacter - 'A' + 0x0A );
+    }
+    else
+    {
+        return 0xFF;
+    }
+}
+
+unsigned char binNibble2Char( unsigned char ucByte )
+{
+    if( ucByte <= 0x09 )
+    {
+        return ( unsigned char )( '0' + ucByte );
+    }
+    else if( ( ucByte >= 0x0A ) && ( ucByte <= 0x0F ) )
+    {
+        return ( unsigned char )( ucByte - 0x0A + 'A' );
+    }
+    else
+    {
+        // Programming error.
+        assert( 0 );
+    }
+    return '0';
+}
+
 
 } /////// End namespace
 

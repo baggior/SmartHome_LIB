@@ -49,6 +49,9 @@ float getFieldFloat(String str, uint8_t fieldNum, char delimiter = ':');
 uint16_t CRC16(uint8_t *puchMsg, uint16_t usDataLen);
 unsigned char calculateLRC( const char * frame, size_t usLen );
 
+unsigned char binNibble2Char( unsigned char ucByte );
+unsigned char char2Binary( unsigned char ucCharacter );
+
 /////////////////////////////////////////////////////////////////////////////
 /*
 String & leftPadTo(String &str, const uint8_t num, const char paddingChar);
