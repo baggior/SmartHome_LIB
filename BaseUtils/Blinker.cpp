@@ -6,7 +6,7 @@
 
 
 Blinker::Blinker(uint8_t pin)
-: _lastBlinkPace(0), led{ .enabled = false, .pin = pin, .on = 0 }
+:  led{ .enabled = false, .pin = pin, .on = 0 }, _lastBlinkPace(0)
 {
   if(led.pin)
     pinMode(led.pin, OUTPUT);    
