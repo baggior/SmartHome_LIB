@@ -188,7 +188,7 @@ void print_esp8266Info(Stream & consolePort)
 
 #elif defined ESP32 
 
-void print_esp32Info(Stream & consolePort)
+void print_esp32Info(Stream & stream)
 {
     //TODO
 }
