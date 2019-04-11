@@ -268,7 +268,7 @@ static String getESP32ChipID() {
   for (uint8_t i=0; i < chipid_size; i++) {
     chipid_arr[i] = (chipid >> (8 * i)) & 0xff;
   }
-  return byteToHexString(chipid_arr, chipid_size, ".");
+  return byteToHexString(chipid_arr, chipid_size, "");
 }
 
 #endif
