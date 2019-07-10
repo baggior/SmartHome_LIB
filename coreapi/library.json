@@ -1,5 +1,5 @@
 {
-    "name":"Core Api",
+    "name":"CoreApi",
     "version": "1.0.0",
 
     "description":"Modularized application framework Library for ESP8266 and ESP32",
