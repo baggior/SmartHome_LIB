@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef _coreapimqtt_h
+#define _coreapimqtt_h
 
 
 #include "coreapi.h"
@@ -35,3 +35,7 @@ protected:
 private:
     long lastReconnectAttempt=0;
 };
+
+
+
+#endif

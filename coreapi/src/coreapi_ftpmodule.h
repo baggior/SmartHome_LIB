@@ -1,6 +1,7 @@
-#pragma once
+#ifndef _coreapiftp_h
+#define _coreapiftp_h
 
-#include "coreapi.h"
+#include <coreapi.h>
 
 #include <ESP8266FtpServer.h>
 
@@ -26,3 +27,5 @@ private:
     // Task taskReceiveCmd;
 
 };
+
+#endif
