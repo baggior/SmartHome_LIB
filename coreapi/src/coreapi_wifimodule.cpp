@@ -99,8 +99,8 @@ _Error _WifiConnectionModule::wifiManagerOpenConnection()
     if(root.isNull()) 
         return _Error(-1, "Error parsing wifi config");
     
-    const char* SSID = root["SSID"]; // TODO: parse
-    const char* password = root["password"]; // TODO: parse
+    const char* SSID = root["SSID"]; // parse
+    const char* password = root["password"]; // parse
     
     const char* hostname = root["hostname"];
     const char* static_ip = root["static_ip"];
