@@ -21,7 +21,18 @@ _Error _WifiConnectionModule::setup()
         if(this->theApp->isDebug()) 
         {            
             // setup remote log
-            this->theApp->getLogger().setupRemoteLog( _DiscoveryServices::getHostname() );
+            // TODO: parse remote log configuration 
+            const JsonObject& root = this->theApp->getConfig().getJsonObject("log");
+            if(root.isNull()) 
+                return _Error(-1, "Error parsing log config");
+            const JsonObject& root_remote = root["remote_log"];
+            if(root_remote.isNull()) 
+                return _Error(-1, "Error parsing log.remote_log config");
+                
+            bool on = root["enable"] && root_remote["enable"];               
+            if(on)  {                
+                this->theApp->getLogger().setupRemoteLog( _DiscoveryServices::getHostname() );
+            }
             
             this->theApp->getNetServices().printDiagWifi( );        
         }

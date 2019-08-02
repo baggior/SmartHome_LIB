@@ -55,10 +55,12 @@ void _ApplicationLogger::setupSerialLog(Stream* _dbgstream, Loglevel_t level)
 }
 
 void _ApplicationLogger::setupRemoteLog(const String hostname, Loglevel_t level)
-{
+{        
     if(hostname.length()>0) {
         initRemoteDebug(hostname);
         this->setLogLevel(level);
+
+        this->info("\t>RemoteLog enabled: hostname: <%s>, logLevel: %d\n", hostname.c_str(), level);
     }
 }
 

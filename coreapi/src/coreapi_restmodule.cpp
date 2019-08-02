@@ -74,7 +74,7 @@ _Error _RestApiModule::setup()
         _theSPIFFSEditor = new SPIFFSEditor(SPIFFS);
       this->webServer->addHandler(_theSPIFFSEditor );
 
-      this->theApp->getLogger().info(("\tSPIFFSEditor started on url:%s\n"), "/edit");
+      this->theApp->getLogger().info(("\tSPIFFSEditor started on url:%s\n"), "http://<hostname.local>/edit");
     }
 
     // Start the server

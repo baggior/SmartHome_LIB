@@ -82,10 +82,12 @@ bool _DiscoveryServices::mdnsAnnounceService(unsigned int server_port, const Str
 {
     if(server_port)
     { 
+        String hostname = _DiscoveryServices::getHostname();  
+
         // Announce esp tcp service:
         MDNS.addService(THING_SERVICE_PREFIX + serviceName, THING_DISCOVERY_PROTO, server_port);  
-        this->theApp.getLogger().info(("\tMDNS announced service: %s, proto: %s, port: %d \n"), 
-            serviceName.c_str(), THING_DISCOVERY_PROTO, server_port);
+        this->theApp.getLogger().info(("\t>MDNS hostname <%s> announced -> service: %s, proto: %s, port: %d \n"), 
+            hostname.c_str(), serviceName.c_str(), THING_DISCOVERY_PROTO, server_port);
 
         // Add service attributes
         for(MdnsAttribute attr: attributes)
