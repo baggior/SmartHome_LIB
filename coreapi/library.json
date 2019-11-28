@@ -17,8 +17,8 @@
     "export":
     {
       "include": [ 
-        "coreapi/src/*",
-        "coreapi/examples/*"
+        "coreapi/src",
+        "coreapi/examples"
       ]    
     },
    
