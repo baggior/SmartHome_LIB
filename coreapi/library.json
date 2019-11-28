@@ -1,6 +1,6 @@
 {
     "name":"CoreApi",
-    "version": "1.0.2",
+    "version": "1.0.3",
 
     "description":"Modularized application framework Library for ESP8266 and ESP32",
     "keywords":"application,async,restapi,webserver,modbus",
