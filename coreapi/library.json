@@ -45,7 +45,8 @@
       },
       {
         "_comment": { "name": "WifiManager" },
-        "name": "https://github.com/tzapu/WiFiManager#development",
+        "name": "WifiManager"
+        "version": "https://github.com/tzapu/WiFiManager#development",
         "frameworks": "arduino"
       }
     ]
