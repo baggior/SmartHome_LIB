@@ -1,3 +1,5 @@
+#ifdef COREAPI_FTP_ENABLED
+
 #include "coreapi_ftpmodule.h"
 
 #define FTP_LISTEN_TASK_INTERVAL_DEFAULT    10 //ms
@@ -104,3 +106,6 @@ void WifiFtpServerModule::setup(Stream &serial)
     }
 }
 */
+
+
+#endif // COREAPI_FTP_ENABLED

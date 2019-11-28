@@ -1,5 +1,6 @@
 #include <Arduino.h>
 
+#define COREAPI_FTP_ENABLED
 #include <coreapi.h>
 #include <coreapi_ftpmodule.h>
 

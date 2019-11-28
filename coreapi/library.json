@@ -1,19 +1,13 @@
 {
     "name":"CoreApi",
-    "version": "1.0.1",
+    "version": "1.0.2",
 
     "description":"Modularized application framework Library for ESP8266 and ESP32",
     "keywords":"application,async,restapi,webserver,modbus",
     
     "frameworks": "arduino",
     "platforms": ["espressif8266", "espressif32"],
-    
-    "license": "MIT",
-    "authors":
-    {
-      "name": "Marco Tombesi",
-      "maintainer": true
-    },
+   
    
     "repository":
     {
@@ -22,12 +16,15 @@
     },
     "export":
     {
-      "include": [ "coreapi" ]    
+      "include": [ 
+        "coreapi/src/*",
+        "coreapi/examples/*"
+      ]    
     },
    
     "dependencies": [
       {
-        "name":"ESP Async WebServer",
+        "name": "Embedded Template Library",
         "frameworks": "arduino"
       },
       {
@@ -39,11 +36,16 @@
         "frameworks": "arduino"
       },
       {
+        "name":"ESP Async WebServer",
+        "frameworks": "arduino"
+      },
+      {
         "name": "RemoteDebug",
         "frameworks": "arduino"
       },
       {
-        "name": "WifiManager",
+        "_comment": { "name": "WifiManager" },
+        "name": "https://github.com/tzapu/WiFiManager#development",
         "frameworks": "arduino"
       }
     ]

@@ -1,3 +1,6 @@
+#ifdef COREAPI_REST_ENABLED
+
+
 #include "coreapi.h"
 
 #ifdef ESP32
@@ -454,3 +457,6 @@ _Error _RestApiModule::restApiMethodSetup()
     //remove core rest api if exists
     this->theApp->removeModule(  this->theApp->getBaseModule( ENUM_TO_STR(_CoreRestApiModule) ) );
  }
+
+
+ #endif // COREAPI_REST_ENABLED

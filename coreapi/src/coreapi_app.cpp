@@ -1,5 +1,8 @@
 #include "coreapi.h"
+
+#ifdef COREAPI_MQTT_ENABLED
 #include "coreapi_mqttmodule.h"
+#endif
 
 #include <TaskScheduler.h>
 
@@ -35,15 +38,23 @@ _Application::~_Application()
 }
 
 static _WifiConnectionModule Core_WifiConnectionModule;
+#ifdef COREAPI_MQTT_ENABLED
 static _RestApiModule Core_RestApiModule;
+#endif
+#ifdef COREAPI_REST_ENABLED
 static MqttModule Core_MqttModule;
+#endif
 
 void _Application::addCoreModules() 
 {
     //TODO add core modules in order
     this->addModule(&Core_WifiConnectionModule);
+    #ifdef COREAPI_REST_ENABLED
     this->addModule(&Core_RestApiModule);
+    #endif
+    #ifdef COREAPI_MQTT_ENABLED
     this->addModule(&Core_MqttModule);
+    #endif
 }
 
 _Error _Application::setup()

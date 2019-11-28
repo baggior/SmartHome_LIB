@@ -1,3 +1,5 @@
+#ifdef COREAPI_MQTT_ENABLED
+
 #include "coreapi_mqttmodule.h"
 
 
@@ -194,3 +196,6 @@ _Error MqttModule::reconnect() const {
     }
     return _NoError;
 }
+
+
+#endif // COREAPI_MQTT_ENABLED

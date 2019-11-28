@@ -133,6 +133,8 @@ private:
 
 };
 
+#ifdef COREAPI_REST_ENABLED
+
 class AsyncWebServer;
 /*
 - This is fully asynchronous server and as such does not run on the loop thread.
@@ -168,6 +170,7 @@ private:
 
 };
 
+#endif // COREAPI_REST_ENABLED
 
 ///////////////////////////////////////////////////////
 
