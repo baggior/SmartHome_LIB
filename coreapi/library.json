@@ -1,6 +1,6 @@
 {
     "name":"CoreApi",
-    "version": "1.0.3",
+    "version": "1.0.4",
 
     "description":"Modularized application framework Library for ESP8266 and ESP32",
     "keywords":"application,async,restapi,webserver,modbus",
@@ -43,9 +43,8 @@
         "name": "RemoteDebug",
         "frameworks": "arduino"
       },
-      {
-        "_comment": { "name": "WifiManager" },
-        "name": "WifiManager"
+      {        
+        "name": "WifiManager",
         "version": "https://github.com/tzapu/WiFiManager#development",
         "frameworks": "arduino"
       }
