@@ -1,6 +1,7 @@
 #ifdef COREAPI_MQTT_ENABLED
 
 #include "coreapi_mqttmodule.h"
+#include "utils/baseutils.h"
 
 
 

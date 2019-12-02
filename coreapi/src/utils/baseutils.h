@@ -6,11 +6,11 @@
 #define BaseUtils_h
 
 #include <Arduino.h>
-#include <Ticker.h>
+// #include <Ticker.h>
 
 #include "strutils.h"
 
-#include "LinkedList.h"
+// #include "LinkedList.h"
 
 
 #if defined (ESP8266) 

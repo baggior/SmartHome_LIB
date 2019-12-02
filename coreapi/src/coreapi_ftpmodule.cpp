@@ -1,6 +1,7 @@
 #ifdef COREAPI_FTP_ENABLED
 
 #include "coreapi_ftpmodule.h"
+#include "utils/baseutils.h"
 
 #define FTP_LISTEN_TASK_INTERVAL_DEFAULT    10 //ms
 #define FORMAT_SPIFFS_ON_FAIL true  //ESP32

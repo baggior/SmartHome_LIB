@@ -4,6 +4,10 @@
 
 #include <coreapi.h>
 
+#include "utils/pragmautils.h"
+#include "utils/dbgutils.h"
+#include "utils/baseutils.h"
+
 void setup() {
        
 }

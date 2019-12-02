@@ -16,6 +16,8 @@
 
 // #include "WiFiConnection.h"
 
+#include "utils/baseutils.h"
+
 #define RESTSERVER_PORT_DEFAULT   80
 
 ////////////////////

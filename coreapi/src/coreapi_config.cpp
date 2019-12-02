@@ -8,6 +8,9 @@
 #include <WiFi.h>
 #endif
 
+#include "utils/baseutils.h"
+
+
 #define CONFIG_FILE_PATH "/config.json"
 // #define CONFIG_FILE_PATH "/config.sist.json"
 

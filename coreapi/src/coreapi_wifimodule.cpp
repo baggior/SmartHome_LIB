@@ -9,7 +9,7 @@
 
 #include <WiFiManager.h>
 
-
+#include "utils/dbgutils.h"
 
 _Error _WifiConnectionModule::setup()
 {
