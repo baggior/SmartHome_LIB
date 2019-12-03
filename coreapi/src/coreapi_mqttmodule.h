@@ -1,6 +1,6 @@
-#ifndef _coreapimqtt_h
-#define _coreapimqtt_h
+#if defined (COREAPI_MQTT_ENABLED) && !defined (_coreapimqtt_h)
 
+#define _coreapimqtt_h
 
 #include "coreapi.h"
 

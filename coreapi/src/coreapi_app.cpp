@@ -7,9 +7,9 @@
 
 #include "utils/baseutils.h"
 
-#ifdef COREAPI_MQTT_ENABLED
 #include "coreapi_mqttmodule.h"
-#endif
+#include "coreapi_restmodule.h"
+
 
 ////////////////////////////////////////////
 

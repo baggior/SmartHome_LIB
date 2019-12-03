@@ -1,6 +1,8 @@
 #ifdef COREAPI_REST_ENABLED
 
 
+#include "coreapi_restmodule.h"
+
 #include "coreapi.h"
 
 #ifdef ESP32

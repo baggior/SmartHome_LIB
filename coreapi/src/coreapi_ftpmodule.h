@@ -1,4 +1,5 @@
-#ifndef _coreapiftp_h
+#if defined (COREAPI_FTP_ENABLED) && !defined (_coreapiftp_h)
+
 #define _coreapiftp_h
 
 #include <coreapi.h>

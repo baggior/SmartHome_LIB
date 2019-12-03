@@ -11,6 +11,10 @@
 #define DEFAULT_TASK_LOOP_TIME_MS 100 
 #define TASK_LOG_TIME_MS  1000
 
+
+#include "boards/standard.h"
+
+
 enum CoreModuleNamesEnum {
     _CoreWifiConnectionModule,
     _CoreFTPServerModule,
@@ -19,4 +23,7 @@ enum CoreModuleNamesEnum {
 };
 
 #endif
+
+
+
 
