@@ -150,8 +150,12 @@ _Error _WifiConnectionModule::wifiManagerOpenConnection()
         {           
             // AsyncWebServer server(80);
             DNSServer dns;            
-            // AsyncWiFiManager wifiManager(&server,&dns);             
+            // AsyncWiFiManager wifiManager(&server,&dns);   
+            #ifdef DEBUG_OUTPUT
             WiFiManager wifiManager(DEBUG_OUTPUT);      
+            #else
+            WiFiManager wifiManager;
+            #endif
 
             this->theApp->getLogger().info (("Start WiFiManager connection.. \r\n") );            
             
