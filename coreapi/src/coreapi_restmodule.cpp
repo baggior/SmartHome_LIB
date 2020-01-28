@@ -40,6 +40,7 @@ _Error _RestApiModule::setup()
   const JsonObject& root = this->theApp->getConfig().getJsonObject("rest");  
   if(!root.isNull()) 
   {
+    this->setupBaseModule(root);
     on = root["enable"];   
     this->_server_port=root["server_port"];
     if(this->_server_port==0) this->_server_port=RESTSERVER_PORT_DEFAULT;
@@ -90,8 +91,8 @@ _Error _RestApiModule::setup()
       this->getTitle().c_str(), this->_server_port);
 
     //mdns announce rest service
-    this->theApp->getNetServices().mdnsAnnounceService(this->_server_port, this->getTitle());
-    // _DiscoveryServices::MdnsQueryResult res = this->theApp->getNetServices().mdnsQuery(this->getTitle());
+    this->theApp->getDiscoveryServices().mdnsAnnounceService(this->_server_port, this);
+    // _DiscoveryServices::MdnsQueryResult res = this->theApp->getDiscoveryServices().mdnsQuery(this->getTitle());
     
     return _NoError;
   }

@@ -48,7 +48,8 @@ public:
     
     inline String getTitle() const {return this->title; }
     inline String getDescr() const {return this->descr; }
-    
+    inline String getDiscoveryServiceName() const ;
+
     inline String info() const {return title + " (" + descr + ")";}
     inline virtual void setEnabled(bool _enabled) { this->enabled = _enabled; }
     inline bool isEnabled() const {return this->enabled;}
@@ -58,6 +59,8 @@ public:
 protected:       
     
     virtual _Error setup()=0;    
+    _Error setupBaseModule(const JsonObject &root);
+
     virtual void shutdown()=0;
     virtual void loop() =0;    
 
@@ -68,6 +71,7 @@ protected:
     _Application* theApp = NULL;
 
     String title;
+    String ianaDiscoveryServiceName;
     String descr;
 
 private:
@@ -254,12 +258,13 @@ public:
     
     MdnsQueryResult mdnsQuery(String service, String proto="tcp");
     bool mdnsAnnounceTheDevice(bool enableArduino=false, bool enableWorkstation=false);
-    bool mdnsAnnounceService(unsigned int server_port, const String serviceName, const MdnsAttributeList & attributes = MdnsAttributeList() );
+    bool mdnsAnnounceService(unsigned int server_port, _BaseModule * serviceModule, const MdnsAttributeList & attributes = MdnsAttributeList());
     void mdnsStopTheDevice();
 
 private:
     friend _Application;
 
+    bool mdnsAnnounceTcpService(unsigned int server_port, const String ianaServiceName, const MdnsAttributeList & attributes = MdnsAttributeList() );
     inline _DiscoveryServices(_Application& _theApp) : theApp(_theApp) {}
 
     _Application& theApp;
@@ -306,7 +311,7 @@ public:
     inline const _ApplicationConfig& getConfig() const  { return this->config; }
 
     inline Scheduler& getScheduler()                    { return this->runner; }
-    inline _DiscoveryServices& getNetServices()               { return this->netSvc; }
+    inline _DiscoveryServices& getDiscoveryServices()   { return this->netSvc; }
 
     inline void setIdleLoopCallback(IdleLoopCallback _idleLoopCallback_fn) {this->idleLoopCallback_fn=_idleLoopCallback_fn;}
 

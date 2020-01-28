@@ -71,6 +71,7 @@ _Error MqttModule::setup()
 
 _Error MqttModule::setup(const JsonObject &root) 
 {
+    this->setupBaseModule(root);
     bool on = root["enable"] | false ;
         
     // config  

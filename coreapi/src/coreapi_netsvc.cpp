@@ -13,8 +13,9 @@
 #include "utils/dbgutils.h"
 
 
-#define THING_SERVICE_PREFIX               "Thing_"
-#define THING_DISCOVERY_PROTO               "tcp"
+#define THING_SERVICE_PREFIX                "Thing_"
+#define MDNS_TRANSPORT_PROTO_TCP            "tcp"
+#define MDNS_TRANSPORT_PROTO_UDP            "udp"
 #define THING_DEFAULT_HOSTNAME              "Thing_*"
 
 
@@ -80,29 +81,59 @@ bool _DiscoveryServices::mdnsAnnounceTheDevice(bool enableArduino, bool enableWo
     return true;
 }
 
-bool _DiscoveryServices::mdnsAnnounceService(unsigned int server_port, const String serviceName, const etl::list<MdnsAttribute, MAX_MDNS_ATTRIBUTES>& attributes)
+bool _DiscoveryServices::mdnsAnnounceService(unsigned int server_port, _BaseModule * serviceModule, const MdnsAttributeList & attributes)
+{
+    if (serviceModule) {
+        String ianaServiceName = serviceModule->getDiscoveryServiceName();
+        return this->mdnsAnnounceTcpService(server_port, ianaServiceName, attributes);
+    }
+    return false;
+}
+
+String _BaseModule::getDiscoveryServiceName() const {
+    if (this->ianaDiscoveryServiceName.length()>0) {
+        return this->ianaDiscoveryServiceName;
+    } else {
+        return THING_SERVICE_PREFIX + this->getTitle();
+    }
+}
+
+_Error _BaseModule::setupBaseModule(const JsonObject &root)
+{
+    if(!root.isNull())
+    {
+        const char* mdns_iana_service_name = root["mdns_service_name"];
+        if (mdns_iana_service_name) {
+            this->ianaDiscoveryServiceName = mdns_iana_service_name;
+        }
+        return _NoError;
+    }
+    return _ConfigLoadError;
+}
+
+bool _DiscoveryServices::mdnsAnnounceTcpService(unsigned int server_port, const String ianaServiceName, const etl::list<MdnsAttribute, MAX_MDNS_ATTRIBUTES>& attributes)
 {
     if(server_port)
     { 
         String hostname = _DiscoveryServices::getHostname();  
 
         // Announce esp tcp service:
-        MDNS.addService(THING_SERVICE_PREFIX + serviceName, THING_DISCOVERY_PROTO, server_port);  
+        MDNS.addService(ianaServiceName, MDNS_TRANSPORT_PROTO_TCP, server_port);  
         this->theApp.getLogger().info(("\t>MDNS hostname <%s> announced -> service: %s, proto: %s, port: %d \n"), 
-            hostname.c_str(), serviceName.c_str(), THING_DISCOVERY_PROTO, server_port);
+            hostname.c_str(), ianaServiceName.c_str(), MDNS_TRANSPORT_PROTO_TCP, server_port);
 
         // Add service attributes
         for(MdnsAttribute attr: attributes)
         {            
             this->theApp.getLogger().debug(("\tMDNS service %s, added TXT attribute: %s -> %s\n"), 
-                serviceName.c_str(), attr.name.c_str(), attr.value.c_str());            
-            MDNS.addServiceTxt(THING_SERVICE_PREFIX + serviceName, THING_DISCOVERY_PROTO, attr.name, attr.value);
+                ianaServiceName.c_str(), attr.name.c_str(), attr.value.c_str());            
+            MDNS.addServiceTxt(ianaServiceName, MDNS_TRANSPORT_PROTO_TCP, attr.name, attr.value);
         }
 
         return true;
     }
     else {
-        this->theApp.getLogger().error(("\t>Error MDNS announce service [%s]: port is not specified\n"), serviceName.c_str());
+        this->theApp.getLogger().error(("\t>Error MDNS announce service [%s]: port is not specified\n"), ianaServiceName.c_str());
     }
 
     return false;

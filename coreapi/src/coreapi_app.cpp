@@ -118,7 +118,7 @@ _Error _Application::setup()
         if(err==_NoError) 
         {
             module->setEnabled(true);
-            this->logger.info((">[%s] module: setup done (ENABLED)\n"), module->getTitle().c_str());
+            this->logger.info((">[%s] module: setup done (ENABLED)\n"), module->getTitle().c_str());            
         }
         else if (err==_Disable) 
         {

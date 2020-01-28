@@ -34,10 +34,10 @@ _Error _WifiConnectionModule::setup()
                 this->theApp->getLogger().setupRemoteLog( _DiscoveryServices::getHostname() );
             }
             
-            this->theApp->getNetServices().printDiagWifi( );        
+            this->theApp->getDiscoveryServices().printDiagWifi( );        
         }
 
-        bool ret = this->theApp->getNetServices().mdnsAnnounceTheDevice(true);        
+        bool ret = this->theApp->getDiscoveryServices().mdnsAnnounceTheDevice(true);        
         if(!ret) {
             err = _Error(-12,"MDNS announce error") ;
         }
@@ -51,7 +51,7 @@ void _WifiConnectionModule::shutdown()
 {
     this->theApp->getLogger().info(("%s: ConnectionModule shutdown..\n"), this->getTitle().c_str());
     
-    this->theApp->getNetServices().mdnsStopTheDevice();
+    this->theApp->getDiscoveryServices().mdnsStopTheDevice();
     
     WiFi.disconnect();
 }
@@ -107,8 +107,11 @@ _Error _WifiConnectionModule::wifiManagerOpenConnection()
 
      // configuration    
     const JsonObject& root = this->theApp->getConfig().getJsonObject("wifi");
-    if(root.isNull()) 
+    if(root.isNull()) {
         return _Error(-1, "Error parsing wifi config");
+    }
+    
+    this->setupBaseModule(root);
     
     const char* SSID = root["SSID"]; // parse
     const char* password = root["password"]; // parse

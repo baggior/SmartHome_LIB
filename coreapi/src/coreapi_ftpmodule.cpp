@@ -30,7 +30,10 @@ _Error WifiFtpServerModule::setup()
     const JsonObject& root = this->theApp->getConfig().getJsonObject("ftp");
     if(!root.isNull())
     {
+        this->setupBaseModule(root);
+        
         on = root["enable"]; 
+
         _server_auth_username = root["server_auth"]["username"];
         _server_auth_password = root["server_auth"]["password"];
         task_listen_interval = root["task_listen_interval"];               
@@ -61,7 +64,7 @@ _Error WifiFtpServerModule::setup()
         ftpServer.begin(_server_auth_username, _server_auth_password);
 
         //mdns announce ftp service
-        this->theApp->getNetServices().mdnsAnnounceService(FTP_CTRL_PORT, this->getTitle());
+        this->theApp->getDiscoveryServices().mdnsAnnounceService(FTP_CTRL_PORT, this);
 
         return _NoError;            
     }
