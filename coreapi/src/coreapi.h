@@ -48,7 +48,7 @@ public:
     
     inline String getTitle() const {return this->title; }
     inline String getDescr() const {return this->descr; }
-    inline String getDiscoveryServiceName() const ;
+    String getDiscoveryServiceName() const ;
 
     inline String info() const {return title + " (" + descr + ")";}
     inline virtual void setEnabled(bool _enabled) { this->enabled = _enabled; }
@@ -121,7 +121,7 @@ protected:
 class _TaskModule : public _BaseModule 
 {
 public:    
-    _TaskModule(String _title, String _descr, unsigned int _taskLoopTimeMs=DEFAULT_TASK_LOOP_TIME_MS) ;
+    _TaskModule(String _title, String _descr, unsigned int _taskLoopTimeMs=DEFAULT_TASK_LOOP_TIME_MS, bool _unique=false) ;
     inline virtual ~_TaskModule() { _TaskModule::shutdown(); }
 
     virtual void setEnabled(bool _enabled) override ;
@@ -132,9 +132,9 @@ protected:
     void taskloop();
 
     unsigned int taskLoopTimeMs;
-    Task loopTask;    
 
 private:
+    Task loopTask;    
     long loopcnt = 0;
 
 };
@@ -255,12 +255,13 @@ public:
         String value;
     };
     typedef etl::list<MdnsAttribute, MAX_MDNS_ATTRIBUTES> MdnsAttributeList;
-    
-    MdnsQueryResult mdnsQuery(String service, String proto="tcp");
+        
     bool mdnsAnnounceTheDevice(bool enableArduino=false, bool enableWorkstation=false);
-    bool mdnsAnnounceService(unsigned int server_port, _BaseModule * serviceModule, const MdnsAttributeList & attributes = MdnsAttributeList());
     void mdnsStopTheDevice();
 
+    bool mdnsAnnounceService(unsigned int server_port, _BaseModule * serviceModule, const MdnsAttributeList & attributes = MdnsAttributeList());
+    MdnsQueryResult mdnsQuery(String service, String proto="tcp");
+    
 private:
     friend _Application;
 

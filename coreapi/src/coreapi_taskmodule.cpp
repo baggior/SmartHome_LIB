@@ -1,8 +1,8 @@
 #include "coreapi.h"
 
 
-_TaskModule::_TaskModule(String _title, String _descr, unsigned int _taskLoopTimeMs) 
-:   _BaseModule(_title, _descr, false, Order_Last),
+_TaskModule::_TaskModule(String _title, String _descr, unsigned int _taskLoopTimeMs, bool unique) 
+:  _BaseModule(_title, _descr, false, Order_Last, unique),
     taskLoopTimeMs(_taskLoopTimeMs),
     loopcnt(0)
 {

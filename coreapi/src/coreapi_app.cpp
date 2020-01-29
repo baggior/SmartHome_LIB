@@ -7,6 +7,7 @@
 
 #include "utils/baseutils.h"
 
+#include "coreapi_otaupdmodule.h"
 #include "coreapi_mqttmodule.h"
 #include "coreapi_restmodule.h"
 
@@ -41,9 +42,12 @@ _Application::~_Application()
 }
 
 static _WifiConnectionModule Core_WifiConnectionModule;
+static _OtaUpdateModule Core_OtaUpdateModule;
+
 #ifdef COREAPI_MQTT_ENABLED
 static _RestApiModule Core_RestApiModule;
 #endif
+
 #ifdef COREAPI_REST_ENABLED
 static MqttModule Core_MqttModule;
 #endif
@@ -52,9 +56,12 @@ void _Application::addCoreModules()
 {
     //TODO add core modules in order
     this->addModule(&Core_WifiConnectionModule);
+    this->addModule(&Core_OtaUpdateModule);
+
     #ifdef COREAPI_REST_ENABLED
     this->addModule(&Core_RestApiModule);
     #endif
+
     #ifdef COREAPI_MQTT_ENABLED
     this->addModule(&Core_MqttModule);
     #endif

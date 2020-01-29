@@ -44,6 +44,11 @@
         "name": "WifiManager",
         "version": "https://github.com/tzapu/WiFiManager#development",
         "frameworks": "arduino"
+      },
+      {
+        "name": "esp32FOTA",
+        "version": "https://github.com/chrisjoyce911/esp32FOTA#master",
+        "frameworks": "arduino"
       }
     ]
   }

@@ -17,6 +17,7 @@
 
 enum CoreModuleNamesEnum {
     _CoreWifiConnectionModule,
+    _CoreOTAUpdateModule,
     _CoreFTPServerModule,
     _CoreRestApiModule,
     _CoreMqttModule
