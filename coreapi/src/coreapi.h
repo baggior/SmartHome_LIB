@@ -11,8 +11,8 @@
 //
 #include "utils/pragmautils.h"
 #include "utils/strutils.h"
-// #include <dbgutils.h>
-// #include <baseutils.h>
+#include "utils/dbgutils.h"
+
 
 #include <etl/list.h>
 
@@ -344,6 +344,7 @@ private:
     IdleLoopCallback idleLoopCallback_fn=NULL;
     long loopcnt = 0;
 };
+
 
 
 
