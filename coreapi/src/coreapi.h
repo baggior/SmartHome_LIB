@@ -216,7 +216,8 @@ public:
     void printConfigTo(Print* stream)const ;
     void printConfigTo(_ApplicationLogger& logger)const ;
 
-    static inline String getFirmwareVersion() { return FW_VERSION; }
+    static inline String getFirmwareVersion() { return VALUE_TO_STRING(FW_VERSION); }
+    static inline String getFirmwareSrcGitRevision() { return VALUE_TO_STRING(GIT_SRC_REV); }
     static String getDeviceInfoString(const char* crlf="\n");
 
 private:
