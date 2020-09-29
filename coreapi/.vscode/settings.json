@@ -1,5 +1,7 @@
 {
     "files.associations": {
         "regex": "cpp"
-    }
+    },
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true
 }
